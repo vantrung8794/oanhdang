@@ -18,6 +18,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginVC" customModule="MySpace" customModuleProvider="target">
             <connections>
+                <outlet property="tfPassword" destination="tIm-xJ-FRg" id="o2n-pG-c2o"/>
+                <outlet property="tfUsername" destination="ZRB-Fx-z31" id="Ji4-mP-0k9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -109,6 +111,9 @@
                     <rect key="frame" x="108" y="382" width="104" height="28"/>
                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="13"/>
                     <state key="normal" title="Đăng ký tài khoản"/>
+                    <connections>
+                        <action selector="signUpAction:" destination="-1" eventType="touchUpInside" id="eSq-R5-nFl"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MySpace" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6m-a2-JOR">
                     <rect key="frame" x="85" y="148.5" width="150" height="44.5"/>

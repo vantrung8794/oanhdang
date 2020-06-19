@@ -18,7 +18,9 @@ class FilesVC: BaseVC{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPageController()
-        
+    }
+    
+    override func setupGradientBackground() {
     }
     
     // MARK: - Functions

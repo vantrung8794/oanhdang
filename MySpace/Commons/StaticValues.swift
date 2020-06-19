@@ -10,4 +10,5 @@ import Foundation
 
 final class StaticValues {
     static var fireBaseToken: String? = nil
+    static var userLogin: LoginModel? = nil
 }

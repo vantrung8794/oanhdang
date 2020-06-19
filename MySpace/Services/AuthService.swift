@@ -10,6 +10,7 @@ import Foundation
 import Moya
 
 enum AuthService {
+    case signup(params: [String: String])
     case login(params: [String: String])
 }
 
@@ -17,14 +18,21 @@ extension AuthService: TargetType{
     var path: String {
         switch self {
         case .login:
-            return "/account/login"
+            return "/login"
+        case .signup:
+            return "/signup"
         }
     }
 
     var task: Task {
         switch self {
-        case  let .login(params):
-            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
+        case  let .login(params), let .signup(params):
+            var multipartData = [MultipartFormData]()
+            for (key, value) in params {
+                let formData = MultipartFormData(provider: .data(value.data(using: .utf8)!), name: key)
+                multipartData.append(formData)
+            }
+            return .uploadMultipart(multipartData)
         }
     }
 }

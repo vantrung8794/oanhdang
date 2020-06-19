@@ -36,6 +36,9 @@ class AccountVC: BaseVC {
             self.tableView.reloadData()
             }).disposed(by: disposeBag)
     }
+    
+    override func setupGradientBackground() {
+    }
 }
 
 extension AccountVC: UITableViewDelegate, UITableViewDataSource {

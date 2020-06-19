@@ -10,8 +10,19 @@ import UIKit
 
 class LoginVC: BaseVC {
 
+    @IBOutlet weak var tfUsername: UITextField!
+    @IBOutlet weak var tfPassword: UITextField!
+    let vm = LoginVM()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func bindData() {
+        super.bindData()
+        vm.isLoginSuccess.filter{$0}.subscribe(onNext: {isOk in
+            NavigationHelper.setRoot(withVC: MainTabbarVC())
+            }).disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -24,9 +35,20 @@ class LoginVC: BaseVC {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    @IBAction func loginAction(_ sender: Any) {
-        let homeVC = MainTabbarVC()
-        self.navigationController?.pushViewController(homeVC, animated: true)
+    override func setupGradientBackground() {
     }
     
+    @IBAction func loginAction(_ sender: Any) {
+      vm.login(inVC: self, username: tfUsername.text!, password: tfPassword.text!)
+    }
+    
+    @IBAction func signUpAction(_ sender: Any) {
+       
+        let signupVC = SignUpVC()
+        signupVC.didSuccess = { username in
+            self.tfUsername.text = username
+        }
+        self.navigationController?.pushViewController(signupVC, animated: true)
+        
+    }
 }

@@ -13,7 +13,7 @@ struct Constants {
 }
 
 struct URLs {
-    static let devBaseURL           = "https://easyface.ttc-solutions.com"
+    static let devBaseURL           = "https://immense-hamlet-71289.herokuapp.com"
 }
 
 struct Colors {

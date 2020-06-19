@@ -22,5 +22,4 @@ pod 'Firebase/Analytics'
   pod "MBCircularProgressBar"
   pod 'SKPhotoBrowser'
   pod 'SwiftGifOrigin', '~> 1.7.0'
-  
 end

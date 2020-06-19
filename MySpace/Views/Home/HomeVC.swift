@@ -28,6 +28,9 @@ class HomeVC: BaseVC {
         tableView.register(HistoryItemCell.self)
     }
     
+    override func setupGradientBackground() {
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 1) {

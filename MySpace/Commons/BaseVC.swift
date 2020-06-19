@@ -35,7 +35,7 @@ class BaseVC: UIViewController{
 
         gradientLayer.frame = self.view.bounds
         navigationController?.makeTransparent()
-//        setupGradientBackground()
+        setupGradientBackground()
     }
 
     override func viewDidLayoutSubviews() {

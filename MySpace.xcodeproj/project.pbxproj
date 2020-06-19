@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		106A46BA2496618F00F742EF /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106A46B82496618F00F742EF /* HomeVC.swift */; };
 		106A46BB2496618F00F742EF /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 106A46B92496618F00F742EF /* HomeVC.xib */; };
+		107B3A10249D0AC6001F35D7 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107B3A0F249D0AC6001F35D7 /* SignUpModel.swift */; };
 		107BE74D2498711700DE36FB /* ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107BE74B2498711700DE36FB /* ImageVC.swift */; };
 		107BE74E2498711700DE36FB /* ImageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 107BE74C2498711700DE36FB /* ImageVC.xib */; };
 		107BE7512498713900DE36FB /* MusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107BE74F2498713900DE36FB /* MusicVC.swift */; };
@@ -85,6 +86,9 @@
 		10824AE724961F8E00EB9E46 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10824AB924961F8E00EB9E46 /* LoginModel.swift */; };
 		10824AEA2496267E00EB9E46 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10824AE82496267E00EB9E46 /* LoginVC.swift */; };
 		10824AEB2496267E00EB9E46 /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10824AE92496267E00EB9E46 /* LoginVC.xib */; };
+		1084A0CB249C6BBC0099CFFC /* SignUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1084A0CA249C6BBC0099CFFC /* SignUpVM.swift */; };
+		1084A0CE249C6F9D0099CFFC /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1084A0CC249C6F9D0099CFFC /* SignUpVC.swift */; };
+		1084A0CF249C6F9D0099CFFC /* SignUpVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1084A0CD249C6F9D0099CFFC /* SignUpVC.xib */; };
 		10CB284824970B0E0069291B /* MainTabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB284724970B0E0069291B /* MainTabbarVC.swift */; };
 		10CB284C24970B960069291B /* FilesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB284A24970B960069291B /* FilesVC.swift */; };
 		10CB284D24970B960069291B /* FilesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10CB284B24970B960069291B /* FilesVC.xib */; };
@@ -105,6 +109,7 @@
 /* Begin PBXFileReference section */
 		106A46B82496618F00F742EF /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		106A46B92496618F00F742EF /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
+		107B3A0F249D0AC6001F35D7 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		107BE74B2498711700DE36FB /* ImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVC.swift; sourceTree = "<group>"; };
 		107BE74C2498711700DE36FB /* ImageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageVC.xib; sourceTree = "<group>"; };
 		107BE74F2498713900DE36FB /* MusicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVC.swift; sourceTree = "<group>"; };
@@ -183,6 +188,9 @@
 		10824AB924961F8E00EB9E46 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		10824AE82496267E00EB9E46 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		10824AE92496267E00EB9E46 /* LoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
+		1084A0CA249C6BBC0099CFFC /* SignUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVM.swift; sourceTree = "<group>"; };
+		1084A0CC249C6F9D0099CFFC /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		1084A0CD249C6F9D0099CFFC /* SignUpVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpVC.xib; sourceTree = "<group>"; };
 		10CB284724970B0E0069291B /* MainTabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarVC.swift; sourceTree = "<group>"; };
 		10CB284A24970B960069291B /* FilesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesVC.swift; sourceTree = "<group>"; };
 		10CB284B24970B960069291B /* FilesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilesVC.xib; sourceTree = "<group>"; };
@@ -364,6 +372,7 @@
 				107BE75924987E6E00DE36FB /* MusicVM.swift */,
 				107BE75B24987E7D00DE36FB /* FileVM.swift */,
 				10F961722499D85700D98835 /* AccountVM.swift */,
+				1084A0CA249C6BBC0099CFFC /* SignUpVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -380,6 +389,8 @@
 				10824AA224961F8E00EB9E46 /* Home */,
 				10CB284924970B840069291B /* Files */,
 				10CB284E24970C230069291B /* Account */,
+				1084A0CC249C6F9D0099CFFC /* SignUpVC.swift */,
+				1084A0CD249C6F9D0099CFFC /* SignUpVC.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -456,6 +467,7 @@
 			isa = PBXGroup;
 			children = (
 				10824AB924961F8E00EB9E46 /* LoginModel.swift */,
+				107B3A0F249D0AC6001F35D7 /* SignUpModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -570,6 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10824A7B24961F6D00EB9E46 /* Roboto-Bold.ttf in Resources */,
+				1084A0CF249C6F9D0099CFFC /* SignUpVC.xib in Resources */,
 				10824A7924961F6D00EB9E46 /* LICENSE.txt in Resources */,
 				10F961692499D32C00D98835 /* SettingInfoCell.xib in Resources */,
 				10CB284D24970B960069291B /* FilesVC.xib in Resources */,
@@ -664,6 +677,7 @@
 				10CB285124970C380069291B /* AccountVC.swift in Sources */,
 				106A46BA2496618F00F742EF /* HomeVC.swift in Sources */,
 				10824ACC24961F8E00EB9E46 /* Constants.swift in Sources */,
+				1084A0CB249C6BBC0099CFFC /* SignUpVM.swift in Sources */,
 				10824AC724961F8E00EB9E46 /* DateExtension.swift in Sources */,
 				10824AC824961F8E00EB9E46 /* CopyableProtocol.swift in Sources */,
 				10824AD624961F8E00EB9E46 /* LoginVM.swift in Sources */,
@@ -706,11 +720,13 @@
 				10824A5624961AC000EB9E46 /* MySpace.xcdatamodeld in Sources */,
 				10824AC424961F8E00EB9E46 /* ImageHelper.swift in Sources */,
 				10824AE724961F8E00EB9E46 /* LoginModel.swift in Sources */,
+				1084A0CE249C6F9D0099CFFC /* SignUpVC.swift in Sources */,
 				10824AEA2496267E00EB9E46 /* LoginVC.swift in Sources */,
 				10824AD424961F8E00EB9E46 /* AuthService.swift in Sources */,
 				10824ADD24961F8E00EB9E46 /* ListTextVC.swift in Sources */,
 				10824ACF24961F8E00EB9E46 /* BaseOutput.swift in Sources */,
 				10824AC624961F8E00EB9E46 /* UIImageExtension.swift in Sources */,
+				107B3A10249D0AC6001F35D7 /* SignUpModel.swift in Sources */,
 				107BE75A24987E6E00DE36FB /* MusicVM.swift in Sources */,
 				10824AE224961F8E00EB9E46 /* DropTextField.swift in Sources */,
 			);
