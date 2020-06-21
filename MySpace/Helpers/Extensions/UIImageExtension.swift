@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIImage {
-    func resize(maxHeight: Float = 600, maxWidth: Float = 500) -> UIImage? {
+    func resize(maxHeight: Float = 800, maxWidth: Float = 800) -> UIImage? {
         var actualHeight: Float = Float(self.size.height)
         var actualWidth: Float = Float(self.size.width)
         var imgRatio: Float = actualWidth / actualHeight

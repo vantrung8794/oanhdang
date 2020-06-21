@@ -39,11 +39,12 @@ class LoginVC: BaseVC {
     }
     
     @IBAction func loginAction(_ sender: Any) {
-      vm.login(inVC: self, username: tfUsername.text!, password: tfPassword.text!)
+        self.view.endEditing(true)
+        vm.login(inVC: self, username: tfUsername.text!, password: tfPassword.text!)
     }
     
     @IBAction func signUpAction(_ sender: Any) {
-       
+        self.view.endEditing(true)
         let signupVC = SignUpVC()
         signupVC.didSuccess = { username in
             self.tfUsername.text = username

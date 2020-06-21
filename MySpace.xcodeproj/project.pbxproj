@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1051B17E249F4AA800C228BC /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1051B17D249F4AA800C228BC /* HomeModel.swift */; };
+		1051B180249F4B9200C228BC /* FilesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1051B17F249F4B9200C228BC /* FilesService.swift */; };
 		106A46BA2496618F00F742EF /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106A46B82496618F00F742EF /* HomeVC.swift */; };
 		106A46BB2496618F00F742EF /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 106A46B92496618F00F742EF /* HomeVC.xib */; };
 		107B3A10249D0AC6001F35D7 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107B3A0F249D0AC6001F35D7 /* SignUpModel.swift */; };
@@ -107,6 +109,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1051B17D249F4AA800C228BC /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		1051B17F249F4B9200C228BC /* FilesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesService.swift; sourceTree = "<group>"; };
 		106A46B82496618F00F742EF /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		106A46B92496618F00F742EF /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
 		107B3A0F249D0AC6001F35D7 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
@@ -359,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				10824A9D24961F8E00EB9E46 /* AuthService.swift */,
+				1051B17F249F4B9200C228BC /* FilesService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -468,6 +473,7 @@
 			children = (
 				10824AB924961F8E00EB9E46 /* LoginModel.swift */,
 				107B3A0F249D0AC6001F35D7 /* SignUpModel.swift */,
+				1051B17D249F4AA800C228BC /* HomeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -678,6 +684,7 @@
 				106A46BA2496618F00F742EF /* HomeVC.swift in Sources */,
 				10824ACC24961F8E00EB9E46 /* Constants.swift in Sources */,
 				1084A0CB249C6BBC0099CFFC /* SignUpVM.swift in Sources */,
+				1051B17E249F4AA800C228BC /* HomeModel.swift in Sources */,
 				10824AC724961F8E00EB9E46 /* DateExtension.swift in Sources */,
 				10824AC824961F8E00EB9E46 /* CopyableProtocol.swift in Sources */,
 				10824AD624961F8E00EB9E46 /* LoginVM.swift in Sources */,
@@ -703,6 +710,7 @@
 				10824ABD24961F8E00EB9E46 /* PopupHelper.swift in Sources */,
 				10824AE324961F8E00EB9E46 /* GradientView.swift in Sources */,
 				10824AC924961F8E00EB9E46 /* AppUtils.swift in Sources */,
+				1051B180249F4B9200C228BC /* FilesService.swift in Sources */,
 				10824AD024961F8E00EB9E46 /* BaseModel.swift in Sources */,
 				10F961702499D74700D98835 /* LogoutCell.swift in Sources */,
 				10F961732499D85700D98835 /* AccountVM.swift in Sources */,

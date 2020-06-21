@@ -18,18 +18,18 @@ class HistoryItemCell: BaseTableCell {
         // Initialization code
     }
     
-    func configCell(_ data: HistoryItem) {
+    func configCell(_ data: FileModel) {
         switch data.type {
         case .Image:
             img.image = UIImage(named: "ic_image")
-        case .Video:
-            img.image = UIImage(named: "ic_video")
+        case .File:
+            img.image = UIImage(named: "ic_files")
         case .Music:
             img.image = UIImage(named: "ic_music")
         default:
             img.image = UIImage()
         }
         
-        lblTitle.text = data.name ?? ""
+        lblTitle.text = data.file_name ?? ""
     }
 }

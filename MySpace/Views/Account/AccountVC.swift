@@ -31,10 +31,10 @@ class AccountVC: BaseVC {
         super.bindData()
         vm.userInfo.subscribe(onNext: { info in
             self.tableView.reloadData()
-            }).disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
         vm.listSettings.subscribe(onNext: { list in
             self.tableView.reloadData()
-            }).disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
     }
     
     override func setupGradientBackground() {
@@ -72,6 +72,18 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
         }
         if section == 2 {
             let cell: LogoutCell = tableView.dequeueReusableCell(for: indexPath)
+            cell.didLogout = {
+                AlertBuilder()
+                    .setTitle("Đăng xuất")
+                    .setSubText("Bạn có chắc chắn muốn đăng xuất?")
+                    .setAction1(withTitle: "Đồng ý") {
+                        NavigationHelper.setRoot(withVC: LoginVC())
+                }
+                .setAction2(withTitle: "Huỷ") {
+                    
+                }.show()
+                
+            }
             return cell
         }
         return UITableViewCell()

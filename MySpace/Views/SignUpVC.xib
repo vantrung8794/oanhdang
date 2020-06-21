@@ -18,8 +18,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpVC" customModule="MySpace" customModuleProvider="target">
             <connections>
-                <outlet property="tfConfirmPass" destination="flg-Jq-8sl" id="H7L-Jj-VQ9"/>
-                <outlet property="tfPassword" destination="PA8-ru-WTY" id="yAX-q3-6ET"/>
+                <outlet property="tfConfirmPass" destination="282-eD-yCO" id="Rb3-hx-kiq"/>
+                <outlet property="tfPassword" destination="2fA-Vc-WtH" id="DBv-G5-wuA"/>
                 <outlet property="tfUserName" destination="8Du-w7-8ne" id="LQB-82-7KZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -51,7 +51,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Số điện thoại" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8Du-w7-8ne">
-                                            <rect key="frame" x="40" y="15" width="334" height="20.5"/>
+                                            <rect key="frame" x="44" y="15" width="330" height="20.5"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                         </textField>
@@ -70,7 +70,7 @@
                                         <constraint firstAttribute="trailing" secondItem="8Du-w7-8ne" secondAttribute="trailing" constant="8" id="Dtl-vG-oNC"/>
                                         <constraint firstItem="8Du-w7-8ne" firstAttribute="centerY" secondItem="Z9a-RQ-asW" secondAttribute="centerY" id="YBN-1B-A0P"/>
                                         <constraint firstItem="fws-Ox-MFA" firstAttribute="leading" secondItem="Z9a-RQ-asW" secondAttribute="leading" constant="8" id="ZRw-bk-g3E"/>
-                                        <constraint firstItem="8Du-w7-8ne" firstAttribute="leading" secondItem="fws-Ox-MFA" secondAttribute="trailing" constant="12" id="f4E-6l-KQK"/>
+                                        <constraint firstItem="8Du-w7-8ne" firstAttribute="leading" secondItem="fws-Ox-MFA" secondAttribute="trailing" constant="16" id="f4E-6l-KQK"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -81,11 +81,6 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UkJ-op-acD">
                                     <rect key="frame" x="0.0" y="60" width="382" height="50"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PA8-ru-WTY">
-                                            <rect key="frame" x="40" y="15.5" width="334" height="19"/>
-                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                        </textField>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_pass_24" translatesAutoresizingMaskIntoConstraints="NO" id="HdV-sY-gtm">
                                             <rect key="frame" x="8" y="15" width="20" height="20"/>
                                             <constraints>
@@ -93,15 +88,20 @@
                                                 <constraint firstAttribute="height" constant="20" id="gct-Yt-ae7"/>
                                             </constraints>
                                         </imageView>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mật khẩu" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2fA-Vc-WtH">
+                                            <rect key="frame" x="44" y="15.5" width="322" height="19"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        </textField>
                                     </subviews>
                                     <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="HdV-sY-gtm" firstAttribute="leading" secondItem="UkJ-op-acD" secondAttribute="leading" constant="8" id="0CG-Kh-5UU"/>
+                                        <constraint firstAttribute="trailing" secondItem="2fA-Vc-WtH" secondAttribute="trailing" constant="16" id="1Ef-Cc-vm5"/>
                                         <constraint firstAttribute="height" constant="50" id="5cH-c8-Q0s"/>
+                                        <constraint firstItem="2fA-Vc-WtH" firstAttribute="leading" secondItem="HdV-sY-gtm" secondAttribute="trailing" constant="16" id="Kut-b5-xkj"/>
                                         <constraint firstItem="HdV-sY-gtm" firstAttribute="centerY" secondItem="UkJ-op-acD" secondAttribute="centerY" id="MJY-B6-an3"/>
-                                        <constraint firstAttribute="trailing" secondItem="PA8-ru-WTY" secondAttribute="trailing" constant="8" id="eBg-e0-Slb"/>
-                                        <constraint firstItem="PA8-ru-WTY" firstAttribute="centerY" secondItem="UkJ-op-acD" secondAttribute="centerY" id="jO1-6J-3cz"/>
-                                        <constraint firstItem="PA8-ru-WTY" firstAttribute="leading" secondItem="HdV-sY-gtm" secondAttribute="trailing" constant="12" id="pkz-Il-RDV"/>
+                                        <constraint firstItem="2fA-Vc-WtH" firstAttribute="centerY" secondItem="UkJ-op-acD" secondAttribute="centerY" id="drR-YZ-VAV"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -112,11 +112,6 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEq-Yt-aRK">
                                     <rect key="frame" x="0.0" y="120" width="382" height="50"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập lại mật khẩu" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="flg-Jq-8sl">
-                                            <rect key="frame" x="40" y="15.5" width="334" height="19"/>
-                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                        </textField>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_pass_24" translatesAutoresizingMaskIntoConstraints="NO" id="mRO-Be-2nZ">
                                             <rect key="frame" x="8" y="15" width="20" height="20"/>
                                             <constraints>
@@ -124,13 +119,18 @@
                                                 <constraint firstAttribute="width" constant="20" id="abb-Vd-k9o"/>
                                             </constraints>
                                         </imageView>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập lại mật khẩu" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="282-eD-yCO">
+                                            <rect key="frame" x="44" y="15.5" width="322" height="19"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        </textField>
                                     </subviews>
                                     <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="flg-Jq-8sl" firstAttribute="centerY" secondItem="IEq-Yt-aRK" secondAttribute="centerY" id="JYE-OE-1zH"/>
-                                        <constraint firstAttribute="trailing" secondItem="flg-Jq-8sl" secondAttribute="trailing" constant="8" id="d0K-q7-fIA"/>
+                                        <constraint firstAttribute="trailing" secondItem="282-eD-yCO" secondAttribute="trailing" constant="16" id="lOJ-f8-WeO"/>
+                                        <constraint firstItem="282-eD-yCO" firstAttribute="centerY" secondItem="IEq-Yt-aRK" secondAttribute="centerY" id="mb4-lq-FCU"/>
+                                        <constraint firstItem="282-eD-yCO" firstAttribute="leading" secondItem="mRO-Be-2nZ" secondAttribute="trailing" constant="16" id="oaS-Dx-ZUf"/>
                                         <constraint firstItem="mRO-Be-2nZ" firstAttribute="leading" secondItem="IEq-Yt-aRK" secondAttribute="leading" constant="8" id="pxV-c5-YBI"/>
-                                        <constraint firstItem="flg-Jq-8sl" firstAttribute="leading" secondItem="mRO-Be-2nZ" secondAttribute="trailing" constant="12" id="q3h-3g-vVk"/>
                                         <constraint firstAttribute="height" constant="50" id="rvl-bl-qVw"/>
                                         <constraint firstItem="mRO-Be-2nZ" firstAttribute="centerY" secondItem="IEq-Yt-aRK" secondAttribute="centerY" id="uE8-Z1-nWN"/>
                                     </constraints>

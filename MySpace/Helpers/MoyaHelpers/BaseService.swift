@@ -13,7 +13,7 @@ import Alamofire
 
 public extension TargetType {
     var baseURL: URL {
-        return URL(string: URLs.devBaseURL)!
+        return URL(string: URLs.localURL)!
     }
 
     var method: Moya.Method {
@@ -25,7 +25,11 @@ public extension TargetType {
     }
     
     var headers: [String : String]? {
-        let header = ["Content-type": "application/json"]
+        var header = ["Content-type": "application/json"]
+        if let token = StaticValues.userLogin?.token {
+            header["Authorization"] = "Bearer " + token
+        }
+
         return header
     }
 }

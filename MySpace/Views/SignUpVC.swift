@@ -43,6 +43,7 @@ class SignUpVC: BaseVC {
     }
 
     @IBAction func signupAction(_ sender: Any) {
+        self.view.endEditing(true)
         if tfUserName.text!.trimed.isEmpty || tfPassword.text!.trimed.isEmpty {
             AppUtils.showMsg(inVC: self, "Tài khoản và mật khẩu không hợp lệ")
             return

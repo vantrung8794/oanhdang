@@ -14,6 +14,7 @@ struct Constants {
 
 struct URLs {
     static let devBaseURL           = "https://immense-hamlet-71289.herokuapp.com"
+    static let localURL             = "http://127.0.0.1:5000"
 }
 
 struct Colors {
