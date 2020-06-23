@@ -11,15 +11,13 @@ import UIKit
 class FilesListVC: BaseVC {
     
     @IBOutlet weak var tableView: UITableView!
-    let vm = FilesVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MusicCell.self)
-        vm.initFiles()
-        vm.listFile.subscribe(onNext: {lst in
+        FileContaintsVM.listOtherFiles.subscribe(onNext: {lst in
             self.tableView.reloadData()
         }).disposed(by: disposeBag)
     }
@@ -27,12 +25,12 @@ class FilesListVC: BaseVC {
 
 extension FilesListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vm.listFile.value.count
+        return FileContaintsVM.listOtherFiles.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MusicCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.configCell(vm.listFile.value[indexPath.row])
+        cell.configCell(FileContaintsVM.listOtherFiles.value[indexPath.row])
         return cell
     }
     

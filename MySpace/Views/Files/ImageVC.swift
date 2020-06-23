@@ -20,31 +20,30 @@ class ImageVC: BaseVC {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(ImageCell.self)
-        vm.initImages()
         bindData()
     }
     
     override func bindData() {
         super.bindData()
-        vm.listImages.subscribe(onNext: {lst in
+        FileContaintsVM.listImages.subscribe(onNext: { lst in
             self.vm.images = lst.map{ image in
-                let photo = SKPhoto.photoWithImageURL(image.url ?? "")
+                let photo = SKPhoto.photoWithImageURL(image.file_url ?? "")
                 photo.shouldCachePhotoURLImage = true
                 return photo
             }
             self.collectionView.reloadData()
-            }).disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
     }
 }
 
 extension ImageVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return vm.listImages.value.count
+        return FileContaintsVM.listImages.value.count
        }
 
        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
            let cell: ImageCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configCell(vm.listImages.value[indexPath.row])
+            cell.configCell(FileContaintsVM.listImages.value[indexPath.row])
            return cell
        }
 

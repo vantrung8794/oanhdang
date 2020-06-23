@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "closure #1 in static FileContaintsVM.getListBucket(inVC:):FileContaintsVM.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "listImages.value">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ImageVC.bindData():ImageVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.vm.images">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

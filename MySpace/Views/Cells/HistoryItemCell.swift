@@ -13,6 +13,8 @@ class HistoryItemCell: BaseTableCell {
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
     
+    var chooseAction: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,4 +34,10 @@ class HistoryItemCell: BaseTableCell {
         
         lblTitle.text = data.file_name ?? ""
     }
+    @IBAction func didChooseAction(_ sender: Any) {
+        if let choose = chooseAction {
+            choose()
+        }
+    }
+    
 }

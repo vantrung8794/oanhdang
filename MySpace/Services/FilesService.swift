@@ -13,6 +13,8 @@ enum FilesService {
     case getHistory
     case getCountData
     case uploadImages(files: [Data], fileName: String)
+    case deleteFile(fileName: String)
+    case getListBucket
 }
 
 extension FilesService: TargetType{
@@ -23,23 +25,28 @@ extension FilesService: TargetType{
         case .getCountData:
             return "/getcountdata"
         case .uploadImages(_, _):
-        return "/upload"
-
+            return "/upload"
+        case .deleteFile(let fileName):
+            return "/deletefile/\(fileName)"
+        case .getListBucket:
+            return "/getlistbucket"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getHistory, .getCountData:
+        case .getHistory, .getCountData, .getListBucket:
             return .get
         case .uploadImages:
             return .post
+        case .deleteFile:
+            return .delete
         }
     }
     
     var task: Task {
         switch self {
-        case  .getHistory, .getCountData:
+        case  .getHistory, .getCountData, .deleteFile, .getListBucket:
             return .requestPlain
         case let .uploadImages(files, fileName):
             var multipartData = [MultipartFormData]()

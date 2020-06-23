@@ -39,11 +39,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smb-Y4-qRM">
-                                <rect key="frame" x="312" y="22.5" width="35" height="24"/>
+                                <rect key="frame" x="312" y="23.5" width="35" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="WX5-uu-Zmz"/>
                                 </constraints>
-                                <state key="normal" image="ic_more"/>
+                                <state key="normal" image="ic_trash">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didChooseAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vWm-EN-RJL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -80,6 +85,6 @@
     </objects>
     <resources>
         <image name="ic_image" width="24" height="24"/>
-        <image name="ic_more" width="24" height="24"/>
+        <image name="ic_trash" width="16" height="16"/>
     </resources>
 </document>

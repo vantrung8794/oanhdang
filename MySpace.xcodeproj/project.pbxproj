@@ -11,6 +11,7 @@
 		1051B180249F4B9200C228BC /* FilesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1051B17F249F4B9200C228BC /* FilesService.swift */; };
 		106A46BA2496618F00F742EF /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106A46B82496618F00F742EF /* HomeVC.swift */; };
 		106A46BB2496618F00F742EF /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 106A46B92496618F00F742EF /* HomeVC.xib */; };
+		10706E5224A0F59F002B1C2B /* FileContaintsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10706E5124A0F59F002B1C2B /* FileContaintsVM.swift */; };
 		107B3A10249D0AC6001F35D7 /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107B3A0F249D0AC6001F35D7 /* SignUpModel.swift */; };
 		107BE74D2498711700DE36FB /* ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107BE74B2498711700DE36FB /* ImageVC.swift */; };
 		107BE74E2498711700DE36FB /* ImageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 107BE74C2498711700DE36FB /* ImageVC.xib */; };
@@ -113,6 +114,7 @@
 		1051B17F249F4B9200C228BC /* FilesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesService.swift; sourceTree = "<group>"; };
 		106A46B82496618F00F742EF /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		106A46B92496618F00F742EF /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
+		10706E5124A0F59F002B1C2B /* FileContaintsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContaintsVM.swift; sourceTree = "<group>"; };
 		107B3A0F249D0AC6001F35D7 /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		107BE74B2498711700DE36FB /* ImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVC.swift; sourceTree = "<group>"; };
 		107BE74C2498711700DE36FB /* ImageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageVC.xib; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 				107BE75B24987E7D00DE36FB /* FileVM.swift */,
 				10F961722499D85700D98835 /* AccountVM.swift */,
 				1084A0CA249C6BBC0099CFFC /* SignUpVM.swift */,
+				10706E5124A0F59F002B1C2B /* FileContaintsVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				10824AC624961F8E00EB9E46 /* UIImageExtension.swift in Sources */,
 				107B3A10249D0AC6001F35D7 /* SignUpModel.swift in Sources */,
 				107BE75A24987E6E00DE36FB /* MusicVM.swift in Sources */,
+				10706E5224A0F59F002B1C2B /* FileContaintsVM.swift in Sources */,
 				10824AE224961F8E00EB9E46 /* DropTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

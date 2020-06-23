@@ -28,8 +28,8 @@ class MusicCell: BaseTableCell {
         lblTitle.text = data.name
     }
     
-    func configCell(_ data: CustomFile) {
+    func configCell(_ data: FileModel) {
         imgType.image = UIImage(named: "ic_files")
-        lblTitle.text = data.name
+        lblTitle.text = data.file_name ?? ""
     }
 }

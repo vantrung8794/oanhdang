@@ -72,6 +72,16 @@ class HomeVC: BaseVC {
                     self.vm.getHistory(inVC: self)
             }.show()
         }).disposed(by: disposeBag)
+        
+        vm.isDeleteSuccess.filter{$0}.subscribe(onNext: { _ in
+            AlertBuilder()
+            .setTitle("Xoá file")
+            .setSubText("Xoá file thành công!")
+                .setAction1(withTitle: "Đóng") {
+                    self.vm.getCountData(inVC: self)
+                    self.vm.getHistory(inVC: self)
+            }.show()
+        }).disposed(by: disposeBag)
     }
     
     @IBAction func choseFileToUploadAction(_ sender: Any) {
@@ -91,6 +101,17 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: HistoryItemCell = tableView.dequeueReusableCell(for: indexPath)
         cell.configCell(vm.listHistoryItems.value[indexPath.row])
+        cell.chooseAction = {
+            AlertBuilder()
+                .setTitle("Đăng xuất")
+                .setSubText("Bạn có chắc chắn muốn xoá \(self.vm.listHistoryItems.value[indexPath.row].file_name ?? "")?")
+                .setAction1(withTitle: "Đồng ý") {
+                    self.vm.deleteFile(inVC: self, fileName: self.vm.listHistoryItems.value[indexPath.row].file_name ?? "")
+            }
+            .setAction2(withTitle: "Huỷ") {
+                
+            }.show()
+        }
         return cell
     }
     
@@ -111,4 +132,8 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
         let name = (StaticValues.userLogin?.username ?? "") + "_Image_" +  String(Date().timeIntervalSince1970)
         vm.uploadImages(inVC: self, withImage: image, fileName: name)
     }
+}
+
+extension HomeVC: UIActionSheetDelegate {
+    
 }

@@ -17,8 +17,8 @@ class ImageCell: BaseCollectionCell {
         // Initialization code
     }
     
-    func configCell(_ data: CustomImage) {
-        let url = URL(string: data.url ?? "")
+    func configCell(_ data: FileModel) {
+        let url = URL(string: data.file_url ?? "")
         imgView.kf.setImage(with: url)
     }
 
