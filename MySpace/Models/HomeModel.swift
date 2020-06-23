@@ -36,6 +36,7 @@ final class FileModel: Mappable {
     var created_date: String?
     var user_name: String?
     var type: ItemType?
+    var isPlay: Bool = false
     
     func mapping(map: Map) {
         file_name <- map["file_name"]

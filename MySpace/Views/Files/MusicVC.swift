@@ -11,7 +11,7 @@ import AVFoundation
 
 class MusicVC: BaseVC {
     
-    var player: AVAudioPlayer?
+    var player = AVPlayer()
     
     @IBOutlet weak var tableView: UITableView!
     let vm = MusicVM()
@@ -21,35 +21,48 @@ class MusicVC: BaseVC {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MusicCell.self)
-        vm.initMusic()
-        vm.listMusic.subscribe(onNext: {lst in
+        FileContaintsVM.listMusics.subscribe(onNext: {lst in
             self.tableView.reloadData()
+        }).disposed(by: disposeBag)
+        
+        vm.isDeleteSuccess.filter{$0}.subscribe(onNext: { _ in
+            FileContaintsVM.getListBucket(inVC: self)
         }).disposed(by: disposeBag)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if let play = player, play.isPlaying {
-            player?.stop()
-            var temp = vm.listMusic.value
-            for (i, element) in temp.enumerated() {
-                if element.isPlay {
-                    temp[i].isPlay = false
-                }
+        self.pause()
+        let temp = FileContaintsVM.listMusics.value
+        for (i, element) in temp.enumerated() {
+            if element.isPlay {
+                temp[i].isPlay = false
             }
-            vm.listMusic.accept(temp)
         }
+        FileContaintsVM.listMusics.accept(temp)
     }
 }
 
 extension MusicVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vm.listMusic.value.count
+        return FileContaintsVM.listMusics.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MusicCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.configCell(vm.listMusic.value[indexPath.row])
+        cell.configCell(FileContaintsVM.listMusics.value[indexPath.row])
+        cell.didDelete = {
+            AlertBuilder()
+                .setTitle("Đăng xuất")
+                .setSubText("Bạn có chắc chắn muốn xoá \(FileContaintsVM.listMusics.value[indexPath.row].file_name ?? "")?")
+                .setAction1(withTitle: "Đồng ý") {
+                    self.vm.deleteFile(inVC: self, fileName: FileContaintsVM.listMusics.value[indexPath.row].file_name ?? "")
+            }
+            .setAction2(withTitle: "Huỷ") {
+                
+            }.show()
+            
+        }
         return cell
     }
     
@@ -58,31 +71,49 @@ extension MusicVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        playSound(indexPath.row)
-    }
-    
-    func playSound(_ index: Int) {
-        var temp = vm.listMusic.value
+        if FileContaintsVM.listMusics.value[indexPath.row].isPlay {
+            pause()
+            let temp = FileContaintsVM.listMusics.value
+            temp[indexPath.row].isPlay = false
+            FileContaintsVM.listMusics.accept(temp)
+            return
+        }
+        pause()
+        let temp = FileContaintsVM.listMusics.value
         for (i, element) in temp.enumerated() {
             if element.isPlay {
                 temp[i].isPlay = false
             }
         }
-        guard let url = Bundle.main.url(forResource: vm.listMusic.value[index].url ?? "", withExtension: "mp3") else { return }
-        
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-            try AVAudioSession.sharedInstance().setActive(true)
-            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-            
-            guard let player = player else { return }
-            player.play()
-            
-            temp[index].isPlay = true
-            vm.listMusic.accept(temp)
-            
-        } catch let error {
-            print(error.localizedDescription)
-        }
+        temp[indexPath.row].isPlay = true
+        FileContaintsVM.listMusics.accept(temp)
+        initPlayer(url: FileContaintsVM.listMusics.value[indexPath.row].file_url ?? "")
+        play()
     }
+
+   func initPlayer(url : String) {
+       guard let url = URL.init(string: url) else { return }
+       let playerItem = AVPlayerItem.init(url: url)
+       player = AVPlayer.init(playerItem: playerItem)
+       playAudioBackground()
+   }
+
+   func playAudioBackground() {
+       do {
+        try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default, options: [.mixWithOthers, .allowAirPlay])
+           print("Playback OK")
+           try AVAudioSession.sharedInstance().setActive(true)
+           print("Session is Active")
+       } catch {
+           print(error)
+       }
+   }
+
+   func pause(){
+       player.pause()
+   }
+
+   func play() {
+       player.play()
+   }
 }

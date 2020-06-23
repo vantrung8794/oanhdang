@@ -21,18 +21,19 @@ class MusicCell: BaseTableCell {
         // Initialization code
     }
     
-    func configCell(_ data: CustomMusic) {
-        if data.isPlay {
-            imgType.image = UIImage.gif(name: "music_play")
-        }else{
-            imgType.image = UIImage(named: "ic_music")
-        }
-        lblTitle.text = data.name
-    }
-    
     func configCell(_ data: FileModel) {
-        imgType.image = UIImage(named: "ic_files")
-        lblTitle.text = data.file_name ?? ""
+        if data.type == .File {
+            imgType.image = UIImage(named: "ic_files")
+            lblTitle.text = data.file_name ?? ""
+        }else{
+            if data.isPlay {
+                imgType.image = UIImage.gif(name: "music_play")
+            }else{
+                imgType.image = UIImage(named: "ic_music")
+            }
+            lblTitle.text = data.file_name ?? ""
+        }
+        
     }
     
     @IBAction func deleteActioon(_ sender: Any) {
