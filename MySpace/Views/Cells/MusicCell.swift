@@ -14,6 +14,8 @@ class MusicCell: BaseTableCell {
     @IBOutlet weak var imgType: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
     
+    var didDelete: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,4 +34,11 @@ class MusicCell: BaseTableCell {
         imgType.image = UIImage(named: "ic_files")
         lblTitle.text = data.file_name ?? ""
     }
+    
+    @IBAction func deleteActioon(_ sender: Any) {
+        if let delete = didDelete {
+            delete()
+        }
+    }
+    
 }

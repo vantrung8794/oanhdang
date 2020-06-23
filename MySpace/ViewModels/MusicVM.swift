@@ -8,6 +8,7 @@
 
 import Foundation
 import RxCocoa
+import Moya
 import RxSwift
 
 struct CustomMusic {
@@ -19,6 +20,7 @@ struct CustomMusic {
 
 class MusicVM: BaseVM {
     var listMusic = BehaviorRelay<[CustomMusic]>(value: [])
+    var isDeleteSuccess = BehaviorRelay<Bool>(value: false)
     
     func initMusic() {
         listMusic.accept([
@@ -27,5 +29,13 @@ class MusicVM: BaseVM {
             CustomMusic(url: "music3", isPlay: false, imageUrl: nil, name: "Gánh hàng rong"),
             CustomMusic(url: "music4", isPlay: false, imageUrl: nil, name: "Ngày mai sẽ khác"),
         ])
+    }
+    
+    func deleteFile(inVC vc: BaseVC, fileName: String){
+        AppUtils.hideLoading(inVC: vc, false)
+        let target = MultiTarget(FilesService.deleteFile(fileName: fileName))
+        Network.request(class: SuccessModel.self, target: target, vc: vc, success: { [unowned self] (obj) in
+            self.isDeleteSuccess.accept(true)
+        })
     }
 }

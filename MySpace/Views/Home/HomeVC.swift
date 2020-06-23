@@ -40,6 +40,7 @@ class HomeVC: BaseVC {
         super.viewWillAppear(animated)
         vm.getCountData(inVC: self)
         vm.getHistory(inVC: self)
+        FileContaintsVM.getListBucket(inVC: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -70,6 +71,7 @@ class HomeVC: BaseVC {
                 .setAction1(withTitle: "Đóng") {
                     self.vm.getCountData(inVC: self)
                     self.vm.getHistory(inVC: self)
+                    FileContaintsVM.getListBucket(inVC: self)
             }.show()
         }).disposed(by: disposeBag)
         
@@ -80,6 +82,7 @@ class HomeVC: BaseVC {
                 .setAction1(withTitle: "Đóng") {
                     self.vm.getCountData(inVC: self)
                     self.vm.getHistory(inVC: self)
+                    FileContaintsVM.getListBucket(inVC: self)
             }.show()
         }).disposed(by: disposeBag)
     }

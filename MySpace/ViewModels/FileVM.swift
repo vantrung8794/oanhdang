@@ -8,6 +8,7 @@
 
 import Foundation
 import RxCocoa
+import Moya
 import RxSwift
 
 struct CustomFile {
@@ -16,15 +17,13 @@ struct CustomFile {
 }
 
 class FilesVM: BaseVM {
-    var listFile = BehaviorRelay<[CustomFile]>(value: [])
-    
-    func initFiles() {
-        listFile.accept([
-            CustomFile(url: "", name: "ho_so_Ca_nha.pdf"),
-            CustomFile(url: "", name: "my_files.zip"),
-            CustomFile(url: "", name: "cv_oanh_Dang.docx")
-            
-        ])
-    }
+    var isDeleteSuccess = BehaviorRelay<Bool>(value: false)
+    func deleteFile(inVC vc: BaseVC, fileName: String){
+           AppUtils.hideLoading(inVC: vc, false)
+           let target = MultiTarget(FilesService.deleteFile(fileName: fileName))
+           Network.request(class: SuccessModel.self, target: target, vc: vc, success: { [unowned self] (obj) in
+               self.isDeleteSuccess.accept(true)
+           })
+       }
 }
 

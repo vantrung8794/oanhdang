@@ -10,7 +10,7 @@ import UIKit
 import SKPhotoBrowser
 
 class ImageVC: BaseVC {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     let vm = ImageVM()
@@ -33,24 +33,39 @@ class ImageVC: BaseVC {
             }
             self.collectionView.reloadData()
         }).disposed(by: disposeBag)
+        
+        vm.isDeleteSuccess.filter{$0}.subscribe(onNext: { _ in
+            FileContaintsVM.getListBucket(inVC: self)
+        }).disposed(by: disposeBag)
     }
 }
 
 extension ImageVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return FileContaintsVM.listImages.value.count
-       }
-
-       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-           let cell: ImageCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configCell(FileContaintsVM.listImages.value[indexPath.row])
-           return cell
-       }
-
-       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-           let width = collectionView.bounds.width / 4.0
-           return CGSize(width: width, height: width)
-       }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: ImageCell = collectionView.dequeueReusableCell(for: indexPath)
+        cell.configCell(FileContaintsVM.listImages.value[indexPath.row])
+        cell.didDelete = {
+            AlertBuilder()
+                .setTitle("Đăng xuất")
+                .setSubText("Bạn có chắc chắn muốn xoá \(FileContaintsVM.listImages.value[indexPath.row].file_name ?? "")?")
+                .setAction1(withTitle: "Đồng ý") {
+                    self.vm.deleteFile(inVC: self, fileName: FileContaintsVM.listImages.value[indexPath.row].file_name ?? "")
+            }
+            .setAction2(withTitle: "Huỷ") {
+                
+            }.show()
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.bounds.width / 4.0
+        return CGSize(width: width, height: width)
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // 2. create PhotoBrowser Instance, and present.
@@ -58,16 +73,16 @@ extension ImageVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         browser.initializePageIndex(indexPath.row)
         present(browser, animated: true, completion: {})
     }
-
-       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-           return UIEdgeInsets.zero
-       }
-
-       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-           return 0
-       }
-
-       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-           return 0
-       }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }

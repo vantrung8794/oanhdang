@@ -25,11 +25,24 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
+                    <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XyJ-fg-mzm">
+                        <rect key="frame" x="139" y="8" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="U9g-YJ-EoK"/>
+                            <constraint firstAttribute="width" constant="20" id="bLj-Ez-aGo"/>
+                        </constraints>
+                        <state key="normal" image="ic_close"/>
+                        <connections>
+                            <action selector="deleteAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Xdg-Mt-Fle"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="XyJ-fg-mzm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="RcM-td-8iM"/>
                 <constraint firstItem="Joe-0o-cpa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="YcD-bI-LpN"/>
                 <constraint firstAttribute="trailing" secondItem="Joe-0o-cpa" secondAttribute="trailing" constant="2" id="ZpF-vd-7At"/>
+                <constraint firstAttribute="trailing" secondItem="XyJ-fg-mzm" secondAttribute="trailing" constant="8" id="ict-NA-eK4"/>
                 <constraint firstAttribute="bottom" secondItem="Joe-0o-cpa" secondAttribute="bottom" constant="2" id="sjv-hV-rK9"/>
                 <constraint firstItem="Joe-0o-cpa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="su4-Hc-Fc5"/>
             </constraints>
@@ -41,4 +54,7 @@
             <point key="canvasLocation" x="183.33333333333334" y="101.11607142857143"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ic_close" width="24" height="24"/>
+    </resources>
 </document>

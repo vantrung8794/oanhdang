@@ -12,6 +12,7 @@ import Kingfisher
 class ImageCell: BaseCollectionCell {
 
     @IBOutlet weak var imgView: UIImageView!
+    var didDelete: (() -> Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,5 +22,10 @@ class ImageCell: BaseCollectionCell {
         let url = URL(string: data.file_url ?? "")
         imgView.kf.setImage(with: url)
     }
-
+    @IBAction func deleteAction(_ sender: Any) {
+        if let delete = didDelete {
+            delete()
+        }
+    }
+    
 }

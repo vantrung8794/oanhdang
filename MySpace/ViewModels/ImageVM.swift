@@ -10,6 +10,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 import SKPhotoBrowser
+import Moya
 
 struct CustomImage {
     var url: String?
@@ -18,6 +19,7 @@ struct CustomImage {
 class ImageVM: BaseVM {
     var listImages = BehaviorRelay<[CustomImage]>(value: [])
     var images = [SKPhoto]()
+    var isDeleteSuccess = BehaviorRelay<Bool>(value: false)
     
     func initImages() {
         listImages.accept([
@@ -37,4 +39,12 @@ class ImageVM: BaseVM {
                 CustomImage(url: "https://i.ibb.co/DMFfV7L/Tro-n-bo-nhu-ng-hi-nh-a-nh-e-p-girl-xinh-cho-ie-n-thoa-i.jpg"),
         ])
     }
+    
+    func deleteFile(inVC vc: BaseVC, fileName: String){
+           AppUtils.hideLoading(inVC: vc, false)
+           let target = MultiTarget(FilesService.deleteFile(fileName: fileName))
+           Network.request(class: SuccessModel.self, target: target, vc: vc, success: { [unowned self] (obj) in
+               self.isDeleteSuccess.accept(true)
+           })
+       }
 }
