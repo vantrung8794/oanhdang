@@ -24,12 +24,12 @@ struct UserInfo {
 
 class AccountVM: BaseVM {
     var listSettings = BehaviorRelay<[SettingItem]>(value: [])
-    var userInfo = BehaviorRelay<UserInfo>(value: UserInfo(avatar: UIImage(named: "avatar"), name: "Oanh Đặng", currentPackage: "Gói Basic 1 (30GB)"))
+    var userInfo = BehaviorRelay<UserInfo>(value: UserInfo(avatar: UIImage(named: "avatar1"), name: StaticVM.userInfo.value?.username ?? "", currentPackage: "\(StaticVM.userInfo.value?.package_name ?? "") (\(StaticVM.userInfo.value?.package_data ?? 0)MB)"))
     
     func initSettings() {
         listSettings.accept([
-            SettingItem(title: "Số điện thoại", value: "0359804447", isOn: nil),
-            SettingItem(title: "Nhận thông báo", value: nil, isOn: true),
+            SettingItem(title: "Số điện thoại", value: userInfo.value.name, isOn: nil),
+//            SettingItem(title: "Nhận thông báo", value: nil, isOn: true),
             SettingItem(title: "Đổi mật khẩu", value: nil, isOn: nil)
         ])
     }

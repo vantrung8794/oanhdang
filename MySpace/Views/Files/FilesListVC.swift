@@ -18,30 +18,30 @@ class FilesListVC: BaseVC {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MusicCell.self)
-        FileContaintsVM.listOtherFiles.subscribe(onNext: {lst in
+        StaticVM.listOtherFiles.subscribe(onNext: {lst in
             self.tableView.reloadData()
         }).disposed(by: disposeBag)
         
         vm.isDeleteSuccess.filter{$0}.subscribe(onNext: { _ in
-            FileContaintsVM.getListBucket(inVC: self)
+            StaticVM.getListBucket(inVC: self)
         }).disposed(by: disposeBag)
     }
 }
 
 extension FilesListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return FileContaintsVM.listOtherFiles.value.count
+        return StaticVM.listOtherFiles.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MusicCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.configCell(FileContaintsVM.listOtherFiles.value[indexPath.row])
+        cell.configCell(StaticVM.listOtherFiles.value[indexPath.row])
         cell.didDelete = {
             AlertBuilder()
                 .setTitle("Đăng xuất")
-                .setSubText("Bạn có chắc chắn muốn xoá \(FileContaintsVM.listOtherFiles.value[indexPath.row].file_name ?? "")?")
+                .setSubText("Bạn có chắc chắn muốn xoá \(StaticVM.listOtherFiles.value[indexPath.row].file_name ?? "")?")
                 .setAction1(withTitle: "Đồng ý") {
-                    self.vm.deleteFile(inVC: self, fileName: FileContaintsVM.listOtherFiles.value[indexPath.row].file_name ?? "")
+                    self.vm.deleteFile(inVC: self, fileName: StaticVM.listOtherFiles.value[indexPath.row].file_name ?? "")
             }
             .setAction2(withTitle: "Huỷ") {
                 
@@ -57,7 +57,7 @@ extension FilesListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let url = URL(string: FileContaintsVM.listOtherFiles.value[indexPath.row].file_url ?? "") {
+        if let url = URL(string: StaticVM.listOtherFiles.value[indexPath.row].file_url ?? "") {
             UIApplication.shared.open(url)
         }
     }

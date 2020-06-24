@@ -21,42 +21,42 @@ class MusicVC: BaseVC {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MusicCell.self)
-        FileContaintsVM.listMusics.subscribe(onNext: {lst in
+        StaticVM.listMusics.subscribe(onNext: {lst in
             self.tableView.reloadData()
         }).disposed(by: disposeBag)
         
         vm.isDeleteSuccess.filter{$0}.subscribe(onNext: { _ in
-            FileContaintsVM.getListBucket(inVC: self)
+            StaticVM.getListBucket(inVC: self)
         }).disposed(by: disposeBag)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.pause()
-        let temp = FileContaintsVM.listMusics.value
+        let temp = StaticVM.listMusics.value
         for (i, element) in temp.enumerated() {
             if element.isPlay {
                 temp[i].isPlay = false
             }
         }
-        FileContaintsVM.listMusics.accept(temp)
+        StaticVM.listMusics.accept(temp)
     }
 }
 
 extension MusicVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return FileContaintsVM.listMusics.value.count
+        return StaticVM.listMusics.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MusicCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.configCell(FileContaintsVM.listMusics.value[indexPath.row])
+        cell.configCell(StaticVM.listMusics.value[indexPath.row])
         cell.didDelete = {
             AlertBuilder()
                 .setTitle("Đăng xuất")
-                .setSubText("Bạn có chắc chắn muốn xoá \(FileContaintsVM.listMusics.value[indexPath.row].file_name ?? "")?")
+                .setSubText("Bạn có chắc chắn muốn xoá \(StaticVM.listMusics.value[indexPath.row].file_name ?? "")?")
                 .setAction1(withTitle: "Đồng ý") {
-                    self.vm.deleteFile(inVC: self, fileName: FileContaintsVM.listMusics.value[indexPath.row].file_name ?? "")
+                    self.vm.deleteFile(inVC: self, fileName: StaticVM.listMusics.value[indexPath.row].file_name ?? "")
             }
             .setAction2(withTitle: "Huỷ") {
                 
@@ -71,23 +71,23 @@ extension MusicVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if FileContaintsVM.listMusics.value[indexPath.row].isPlay {
+        if StaticVM.listMusics.value[indexPath.row].isPlay {
             pause()
-            let temp = FileContaintsVM.listMusics.value
+            let temp = StaticVM.listMusics.value
             temp[indexPath.row].isPlay = false
-            FileContaintsVM.listMusics.accept(temp)
+            StaticVM.listMusics.accept(temp)
             return
         }
         pause()
-        let temp = FileContaintsVM.listMusics.value
+        let temp = StaticVM.listMusics.value
         for (i, element) in temp.enumerated() {
             if element.isPlay {
                 temp[i].isPlay = false
             }
         }
         temp[indexPath.row].isPlay = true
-        FileContaintsVM.listMusics.accept(temp)
-        initPlayer(url: FileContaintsVM.listMusics.value[indexPath.row].file_url ?? "")
+        StaticVM.listMusics.accept(temp)
+        initPlayer(url: StaticVM.listMusics.value[indexPath.row].file_url ?? "")
         play()
     }
 

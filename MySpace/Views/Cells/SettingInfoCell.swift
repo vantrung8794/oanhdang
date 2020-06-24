@@ -12,6 +12,7 @@ class SettingInfoCell: BaseTableCell {
 
     @IBOutlet weak var imgAvatar: UIImageView!
     @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblPackageType: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,4 +20,9 @@ class SettingInfoCell: BaseTableCell {
         imgAvatar.clipsToBounds = true
     }
     
+    func configCell(_ data: UserInfo) {
+        self.imgAvatar.image = data.avatar
+        self.lblName.text = data.name
+        lblPackageType.text = "  \(data.currentPackage ?? "")  "
+    }
 }

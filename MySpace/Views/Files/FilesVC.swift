@@ -18,7 +18,7 @@ class FilesVC: BaseVC{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPageController()
-//        FileContaintsVM.getListBucket(inVC: self)
+//        StaticVM.getListBucket(inVC: self)
     }
     
     override func setupGradientBackground() {

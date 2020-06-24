@@ -25,7 +25,7 @@ class ImageVC: BaseVC {
     
     override func bindData() {
         super.bindData()
-        FileContaintsVM.listImages.subscribe(onNext: { lst in
+        StaticVM.listImages.subscribe(onNext: { lst in
             self.vm.images = lst.map{ image in
                 let photo = SKPhoto.photoWithImageURL(image.file_url ?? "")
                 photo.shouldCachePhotoURLImage = true
@@ -35,25 +35,25 @@ class ImageVC: BaseVC {
         }).disposed(by: disposeBag)
         
         vm.isDeleteSuccess.filter{$0}.subscribe(onNext: { _ in
-            FileContaintsVM.getListBucket(inVC: self)
+            StaticVM.getListBucket(inVC: self)
         }).disposed(by: disposeBag)
     }
 }
 
 extension ImageVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return FileContaintsVM.listImages.value.count
+        return StaticVM.listImages.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configCell(FileContaintsVM.listImages.value[indexPath.row])
+        cell.configCell(StaticVM.listImages.value[indexPath.row])
         cell.didDelete = {
             AlertBuilder()
                 .setTitle("Đăng xuất")
-                .setSubText("Bạn có chắc chắn muốn xoá \(FileContaintsVM.listImages.value[indexPath.row].file_name ?? "")?")
+                .setSubText("Bạn có chắc chắn muốn xoá \(StaticVM.listImages.value[indexPath.row].file_name ?? "")?")
                 .setAction1(withTitle: "Đồng ý") {
-                    self.vm.deleteFile(inVC: self, fileName: FileContaintsVM.listImages.value[indexPath.row].file_name ?? "")
+                    self.vm.deleteFile(inVC: self, fileName: StaticVM.listImages.value[indexPath.row].file_name ?? "")
             }
             .setAction2(withTitle: "Huỷ") {
                 

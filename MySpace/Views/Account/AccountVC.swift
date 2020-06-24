@@ -22,6 +22,11 @@ class AccountVC: BaseVC {
         tableView.register(LogoutCell.self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        StaticVM.getUserInfo(inVC: self)
+    }
+    
     override func initData() {
         super.initData()
         vm.initSettings()
@@ -29,6 +34,13 @@ class AccountVC: BaseVC {
     
     override func bindData() {
         super.bindData()
+        StaticVM.userInfo.subscribe(onNext: { info in
+            self.vm.userInfo.accept(UserInfo(avatar: UIImage(named: "avatar1"), name: info?.full_name ?? info?.username, currentPackage: "\(info?.package_name ?? "") (\(info?.package_data ?? 0)MB)"))
+            var temp = self.vm.listSettings.value
+            temp[0].value = info?.username
+            self.vm.listSettings.accept(temp)
+        }).disposed(by: disposeBag)
+        
         vm.userInfo.subscribe(onNext: { info in
             self.tableView.reloadData()
         }).disposed(by: disposeBag)
@@ -63,6 +75,7 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
         let section = indexPath.section
         if section == 0 {
             let cell: SettingInfoCell = tableView.dequeueReusableCell(for: indexPath)
+            cell.configCell(vm.userInfo.value)
             return cell
         }
         if section == 1 {

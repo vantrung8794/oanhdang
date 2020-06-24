@@ -9,12 +9,14 @@
 import UIKit
 import MBCircularProgressBar
 import Photos
+import Kingfisher
 
 class HomeVC: BaseVC {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var lblCountdata: UILabel!
+    @IBOutlet weak var imgAvatar: UIImageView!
     
     @IBOutlet weak var progressBar: MBCircularProgressBarView!
     @IBOutlet weak var heightOfTableView: NSLayoutConstraint!
@@ -23,6 +25,7 @@ class HomeVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        StaticVM.getUserInfo(inVC: self)
     }
     
     override func initUI() {
@@ -38,9 +41,8 @@ class HomeVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        vm.getCountData(inVC: self)
         vm.getHistory(inVC: self)
-        FileContaintsVM.getListBucket(inVC: self)
+        StaticVM.getListBucket(inVC: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,6 +52,15 @@ class HomeVC: BaseVC {
     
     override func bindData() {
         super.bindData()
+        StaticVM.userInfo.filter{$0 != nil}.subscribe(onNext: { info in
+            self.lblUserName.text = info?.full_name ?? info?.username
+            self.vm.getCountData(inVC: self)
+            if let avatar_url = info?.avatar_url {
+                let url = URL(string: avatar_url)
+                self.imgAvatar.kf.setImage(with: url)
+            }
+            }).disposed(by: disposeBag)
+        
         vm.listHistoryItems.subscribe(onNext: {lst in
             self.tableView.reloadData()
             self.heightOfTableView.constant = CGFloat(lst.count) * self.vm.HeightOfCell
@@ -59,8 +70,8 @@ class HomeVC: BaseVC {
             UIView.animate(withDuration: 1) {
                 let count = countData / 1024 / 1024
                 let roundCount =  Double(round(100*count)/100)
-                self.progressBar.value = CGFloat(roundCount)
-                self.lblCountdata.text = "Data sử dụng \(roundCount)MB /100MB"
+                self.progressBar.value = CGFloat(roundCount * 100) / CGFloat(StaticVM.userInfo.value?.package_data ?? 1)
+                self.lblCountdata.text = "Data sử dụng \(roundCount)MB /\(StaticVM.userInfo.value?.package_data ?? 0)MB"
             }
         }).disposed(by: disposeBag)
         
@@ -71,7 +82,7 @@ class HomeVC: BaseVC {
                 .setAction1(withTitle: "Đóng") {
                     self.vm.getCountData(inVC: self)
                     self.vm.getHistory(inVC: self)
-                    FileContaintsVM.getListBucket(inVC: self)
+                    StaticVM.getListBucket(inVC: self)
             }.show()
         }).disposed(by: disposeBag)
         
@@ -82,7 +93,7 @@ class HomeVC: BaseVC {
                 .setAction1(withTitle: "Đóng") {
                     self.vm.getCountData(inVC: self)
                     self.vm.getHistory(inVC: self)
-                    FileContaintsVM.getListBucket(inVC: self)
+                    StaticVM.getListBucket(inVC: self)
             }.show()
         }).disposed(by: disposeBag)
     }
